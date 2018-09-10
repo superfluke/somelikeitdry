@@ -17,6 +17,7 @@ import net.minecraftforge.event.terraingen.WorldTypeEvent;
 import net.minecraftforge.event.world.WorldEvent;
 import net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate;
 import net.minecraftforge.event.terraingen.PopulateChunkEvent.Populate;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
@@ -44,7 +45,7 @@ public class SomeLikeItDry
 
 	public static final String MODID = "somelikeitdry";
 	public static final String NAME = "Some Like It Dry";
-	public static final String VERSION = "1.0";
+	public static final String VERSION = "1.1.0";
 
 
 	@Instance(MODID)
@@ -70,6 +71,8 @@ public class SomeLikeItDry
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event) 
 	{
+		if (Loader.isModLoaded("thebetweenlands"))
+			BetweenlandsCompat.setupBetweenBiomeList();
 	}
 	
 	@SubscribeEvent 
@@ -79,10 +82,15 @@ public class SomeLikeItDry
 			event.setResult(Result.DENY);
 	}
 
-	
 	@SubscribeEvent 
 	public void onInitGenLayers(WorldTypeEvent.InitBiomeGens event)
 	{	
+		if (Loader.isModLoaded("thebetweenlands"))
+		{
+			int biomeSample = event.getOriginalBiomeGens()[1].getInts(0, 0, 1, 1)[0];
+			if(BetweenlandsCompat.isBetweenBiome(biomeSample))
+				return;
+		}
 		String genOptions = "{\"biomeSize\":" + Configs.general.biomeSize + ",\"riverSize\":" + Configs.general.riverSize + "}";
 		GenLayer[] newGenLayers;
 		newGenLayers = DryGenLayers.initializeAllBiomeGenerators(event.getSeed(), event.getWorldType(), ChunkGeneratorSettings.Factory.jsonToFactory(genOptions).build());
