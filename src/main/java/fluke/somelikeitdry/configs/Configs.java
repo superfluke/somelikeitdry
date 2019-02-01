@@ -23,6 +23,10 @@ public class Configs {
 		@Config.RequiresWorldRestart
 		public int skipLakeChance = 60;
 		
+		@Config.Comment({"Percent chance that water falls (single block water sources) will not generate in caves. Range 0-100", "Default: 60"})
+		@Config.RequiresWorldRestart
+		public int skipWaterFallChance = 60;
+		
 		@Config.Comment({"Disable river generation.", "Default: false"})
 		@Config.RequiresWorldRestart
 		public boolean removeRivers = false;
