@@ -1,22 +1,17 @@
 package fluke.somelikeitdry;
 
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
-import net.minecraft.world.WorldType;
-import net.minecraft.world.biome.Biome;
-import net.minecraft.world.gen.ChunkGeneratorOverworld;
+import org.apache.logging.log4j.Logger;
+
+import fluke.somelikeitdry.configs.Configs;
+import fluke.somelikeitdry.proxy.CommonProxy;
+import fluke.somelikeitdry.world.DryGenLayers;
 import net.minecraft.world.gen.ChunkGeneratorSettings;
 import net.minecraft.world.gen.layer.GenLayer;
-import net.minecraft.world.gen.layer.GenLayerSmooth;
-import net.minecraft.world.gen.layer.GenLayerVoronoiZoom;
-import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.terraingen.DecorateBiomeEvent;
 import net.minecraftforge.event.terraingen.PopulateChunkEvent;
-import net.minecraftforge.event.terraingen.WorldTypeEvent;
-import net.minecraftforge.event.world.WorldEvent;
-import net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate;
 import net.minecraftforge.event.terraingen.PopulateChunkEvent.Populate;
+import net.minecraftforge.event.terraingen.WorldTypeEvent;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -25,27 +20,17 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLServerAboutToStartEvent;
-import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.fml.relauncher.ReflectionHelper;
 import net.minecraftforge.fml.common.eventhandler.Event.Result;
-
-import org.apache.logging.log4j.Logger;
-
-import fluke.somelikeitdry.configs.Configs;
-import fluke.somelikeitdry.proxy.CommonProxy;
-import fluke.somelikeitdry.world.DryGenLayers;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 
-@Mod(modid = SomeLikeItDry.MODID, name = SomeLikeItDry.NAME, version = SomeLikeItDry.VERSION)
+@Mod(modid = SomeLikeItDry.MODID, name = SomeLikeItDry.NAME, version = SomeLikeItDry.VERSION, acceptableRemoteVersions="*")
 public class SomeLikeItDry 
 {
 
 	public static final String MODID = "somelikeitdry";
 	public static final String NAME = "Some Like It Dry";
-	public static final String VERSION = "1.2.1";
+	public static final String VERSION = "1.2.2";
 
 
 	@Instance(MODID)

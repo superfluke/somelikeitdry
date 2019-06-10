@@ -13,7 +13,6 @@ import net.minecraft.world.gen.layer.GenLayerDeepOcean;
 import net.minecraft.world.gen.layer.GenLayerEdge;
 import net.minecraft.world.gen.layer.GenLayerFuzzyZoom;
 import net.minecraft.world.gen.layer.GenLayerHills;
-import net.minecraft.world.gen.layer.GenLayerIsland;
 import net.minecraft.world.gen.layer.GenLayerRareBiome;
 import net.minecraft.world.gen.layer.GenLayerRemoveTooMuchOcean;
 import net.minecraft.world.gen.layer.GenLayerRiver;

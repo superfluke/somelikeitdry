@@ -10,7 +10,7 @@ public class GenLayerDryIsland extends GenLayer
     public GenLayerDryIsland(long p_i2124_1_)
     {
         super(p_i2124_1_);
-        this.oceanConversionChance = Configs.general.oceanConversionChance;
+        oceanConversionChance = Configs.general.oceanConversionChance;
     }
 
     /**
